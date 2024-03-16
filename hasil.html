@@ -1,0 +1,94 @@
+
+<!-- berikut adalah code untuk halaman hasil akhir -->
+<!-- engagement_low.html -->
+<!-- NOTE: copas baris ini dan simpan dengan nama range nilai (mid,up,low) dengan format .html -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engagement Low</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .card {
+      width: 70%;
+      margin: auto;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+    .btn-back {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h3 class="mb-4 text-center">Anda teridentifikasi cenderung tidak memiliki Employee Engagement.</h3>
+      <p>Nama = <span id="nama"></span></p>
+      <p>Jabatan = <span id="jabatan"></span></p>
+      <p>Score Organizational Justice = <span id="totalScoreOJ"></span></p>
+      <p>Score Meaningful Work = <span id="totalScoreMW"></span></p>
+      <p>Score Transformational Leadership = <span id="totalScoreTL"></span></p>
+      <p>Score Kepribadian Conscientiousness = <span id="totalScoreC"></span></p>
+      <p>Score Employee Engagement = <span id="scoreakhir"></span></p>
+      <p>Berdasarkan hasil tersebut, sebaiknya perusahaan memang menghindari untuk mempekerjakan 
+        karyawan dengan tidak adanya engagement. Kendati demikian, keputusan akhir tetap berada di tangan Anda</p>
+        <button class="btn btn-primary btn-back" onclick="resetScoresAndGoBack()">Kembali</button>
+      </div>
+    </div>
+  </div>
+ <!-- Footer -->
+ <footer class="bg-light text-center py-3 mt-auto">
+    <div class="container">
+      <div class="col-md-6 mx-auto"> <!-- mx-auto untuk membuatnya di tengah secara horizontal -->
+        <p>&copy; 2024 - Hak Cipta oleh Laboratorium Multimedia Robotika & Fakultas Psikologi</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+      // Fetch data from localStorage
+    const nama = localStorage.getItem('nama');
+    const jabatan = localStorage.getItem('jabatan');
+    const scoreakhir= localStorage.getItem('scoreakhir');
+    const totalScoreOJ= localStorage.getItem('totalScoreOJ');
+    const totalScoreMW= localStorage.getItem('totalScoreMW');
+    const totalScoreTL= localStorage.getItem('totalScoreTL');
+    const totalScoreC= localStorage.getItem('totalScoreC');
+    // Set data to HTML elements
+    document.getElementById('nama').innerText = nama;
+    document.getElementById('jabatan').innerText = jabatan;
+    document.getElementById('scoreakhir').innerText = scoreakhir;
+    document.getElementById('totalScoreOJ').innerText = totalScoreOJ;
+    document.getElementById('totalScoreMW').innerText = totalScoreMW;
+    document.getElementById('totalScoreTL').innerText = totalScoreTL;
+    document.getElementById('totalScoreC').innerText = totalScoreC;
+
+    function resetScoresAndGoBack() {
+    // Reset nilai score di localStorage
+    localStorage.setItem('scoreakhir', '0');
+    localStorage.setItem('totalScoreOJ', '0');
+    localStorage.setItem('totalScoreMW', '0');
+    localStorage.setItem('totalScoreTL', '0');
+    localStorage.setItem('totalScoreC', '0');
+
+    // Redirect ke halaman index.html atau halaman sebelumnya
+    window.location.href = 'index.html';
+  }
+  </script>>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

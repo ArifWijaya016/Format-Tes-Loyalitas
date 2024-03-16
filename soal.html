@@ -1,0 +1,144 @@
+<!-- APABILA INGIN MENGGUNAKAN FORMAT YANG SAMA MAKA MENGGUNAKAN FILE INI, COPAS SAJA..., UNTUK BAGIAN YANG DIGANTI ADA PADA BAGIAN
+COMMAND PENJELASAN -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indikator Loyalitas Karyawan</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .form-group {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="image/ug.png" alt="Logo" height="30"> <!-- SET LOGO PADA QUIZ-->
+      </a>
+      <span class="navbar-text mx-auto">
+        Organizational Justice (OJ) <!-- BAGIAN JUDL, TINGGAL GANTI SAJA-->
+      </span>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <form id="quizForm">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <!-- Container for questions -->
+          <div id="questionsContainer"></div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-4 mx-auto">
+          <button type="button" class="btn btn-primary btn-block" onclick="calculateScore()">Selesai</button>
+        </div>
+      </div>
+    </form>
+  </div>
+ <!-- Footer -->
+ <footer class="bg-light text-center py-3 mt-auto">
+  <div class="container">
+    <div class="col-md-6 mx-auto"> <!-- mx-auto untuk membuatnya di tengah secara horizontal -->
+      <p>&copy; 2024 - Hak Cipta oleh Laboratorium Multimedia Robotika & Fakultas Psikologi</p>
+    </div>
+  </div>
+</footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Array of questions
+    const questions = [
+      "Secara keseluruhan, penghargaan yang saya terima cukup adil",
+      "Atasan saya mengklarifikasi keputusan-keputusan dan memberikan informasi tambahan ketika diminta oleh karyawan",
+      "Atasan memberikan masukan yang baik mengenai Keputusan yang diambil tentang pekerjaan saya.",
+      "Untuk mengambil Keputusan pekerjaan, atasan saya mengumpulkan informasi yang akurat dan lengkap ",
+      "Atasan menjelaskan secara rinci setiap Keputusan yang diambil tentang pekerjaan saya ",
+      "Mengenai keputusan yang diambil tentang pekerjaan saya, atasan mendiskusikan dengan saya dampak dari keputusan tersebut. ",
+      "Ketika keputusan diambil tentang pekerjaan saya, atasan menunjukkan kepedulian terhadap hak saya sebagai karyawan ",
+      "Ketika mengambil Keputusan tentang pekerjaan saya, atasan memberikan penjelasan yang masuk akal bagi saya. ",
+      "Jadwal kerja saya diterapkan secara adil ",
+      ".Saya merasa gaji yang saya terima sudah sesuai dengan pekerjaan saya. ",
+    ];
+
+    // Function to generate question elements
+    function generateQuestions() {
+      const questionsContainer = document.getElementById('questionsContainer');
+
+      questions.forEach((question, index) => {
+        const questionNumber = index + 1;
+
+        // Create question container
+        const questionContainer = document.createElement('div');
+        questionContainer.classList.add('form-group');
+
+        // Create question label
+        const questionLabel = document.createElement('label');
+        questionLabel.textContent = `${questionNumber}. ${question}`;
+        questionContainer.appendChild(questionLabel);
+
+        // Create dropdown for 'Ya' and 'Tidak'
+        const dropdownContainer = document.createElement('div');
+        dropdownContainer.classList.add('custom-select');
+
+        const dropdown = document.createElement('select');
+        dropdown.id = `jawaban${questionNumber}`;
+        dropdown.name = `jawaban${questionNumber}`;
+        dropdown.classList.add('custom-select');
+
+    // GANTI VALUE 5 DAN YA SESUAI DENGAN KEBUTUHAN NILAI, NILAI 5 DISINI BERARTI APABILA MEMILIH YA MAKA BERNILAI 5
+        const optionElement = document.createElement('option');
+        optionElement.value = '5';
+        optionElement.text = 'Ya';
+        dropdown.appendChild(optionElement);
+
+        const optionElement2 = document.createElement('option');
+        optionElement2.value = '0';
+        optionElement2.text = 'Tidak';
+        dropdown.appendChild(optionElement2);
+
+        dropdownContainer.appendChild(dropdown);
+        questionContainer.appendChild(dropdownContainer);
+
+        questionsContainer.appendChild(questionContainer);
+      });
+    }
+
+    // Fungsi menghitung score dan fungsi untuk batasan nilai, sesuaikan calculateScore sesuai dengan jenis soal agar
+    //nilai masing-masing bagian dapat disimpan
+    // Function to calculate OJ score and redirect
+    function calculateScore() {
+      let totalScoreOJ = 0;
+
+      // Loop through the dropdowns for each question
+      for (let i = 1; i <= questions.length; i++) {
+        const selectedOption = document.getElementById(`jawaban${i}`);
+        
+        // If an option is selected, add its value to the totalScore
+        if (selectedOption) {
+          totalScoreOJ += parseInt(selectedOption.value);
+        }
+      }
+      localStorage.setItem('totalScoreOJ', totalScoreOJ);
+      // Redirect based on the totalScore
+      if (totalScoreOJ >= 50) {
+        window.location.href = 'ee.html';
+      } else {
+        window.location.href = 'mw.html';
+      }
+    }
+
+    // Call the function to generate questions on page load
+    generateQuestions();
+
+  </script>
+</body>
+</html>

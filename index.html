@@ -1,0 +1,67 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Indikator Loyalitas Karyawan</title> <!--SETTING JUDUL LAMAN WEB PADA BROWSER -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="styles.css"> <!--SET UNTUK DIRECTORY CSS-->
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <div class="container mt-5 flex-grow-1">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="image/ug.png" class="img-fluid" alt="Image"> <!--SET MENUJU KE LOGO/GAMBAR-->
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+
+            <h2>Indikator Loyalitas Karyawan</h2> <!--SET JUDUL PADA HALAMAN LOGIN WEB-->
+          
+        </div>
+          <div class="card-body">
+
+            <!-- INTERFACE INTERAKTIF SAAT MENGKLIK TOMBOL MULAI..., FUNGSI startQuiz(); berada pada file script.js-->
+            <form onsubmit="startQuiz(); return false;"> 
+            
+            <!--COPY 1 PARAGRAF BERIKUT UNTUK MEMBUAT FORM ISI BARU-->
+              <div class="form-group">
+                <!-- UNTUK SET KEPERLUAN LOGIN APA SAJA YANG DIISI, PERHATIKAN PADA KOLOM
+                FOR="nama", penggunaan "nama" sesuai dengan apa yang mau diisi begitu pula jabatan -->
+                <label for="nama">Nama:</label> <!-- Nama: diisi sesuai kebutuhan apa yang mau diisi-->
+                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Anda" required>
+              </div>
+            <!-- SAMPAI SINI -->
+              <div class="form-group">
+                <label for="jabatan">Jabatan:</label>
+                <input type="text" class="form-control" id="jabatan" placeholder="Masukkan Jabatan Anda" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Mulai Kuis</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center py-3 mt-auto">
+    <div class="container">
+      <div class="col-md-6 mx-auto"> <!-- mx-auto untuk membuatnya di tengah secara horizontal -->
+        <p>&copy; 2024 - Hak Cipta oleh Laboratorium Multimedia Robotika & Fakultas Psikologi</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
